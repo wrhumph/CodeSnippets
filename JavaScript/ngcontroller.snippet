@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Markup for Angular Controller</Title>
+      <Author>Pete</Author>
+      <Description>Pete's Template for adding an Angular Controller</Description>
+      <Shortcut>ngcontroller</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>id</ID>
+          <ToolTip>Replace with a variable to hold the controller name.</ToolTip>
+          <Default>controllerId</Default>
+        </Literal>
+        <Literal>
+          <ID>module</ID>
+          <ToolTip>Replace with a module name variable.</ToolTip>
+          <Default>app</Default>
+        </Literal>
+        <Literal>
+          <ID>controller</ID>
+          <ToolTip>Replace with the string name of the controller.</ToolTip>
+          <Default>customController</Default>
+        </Literal>
+        <Literal>
+          <ID>dependency</ID>
+          <ToolTip>Replace with the dependency for controller.</ToolTip>
+          <Default>factory</Default>
+        </Literal>
+        <Literal>
+          <ID>member1</ID>
+          <ToolTip>Replace with the name of a member of the controller.</ToolTip>
+          <Default>Data</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="JavaScript">
+        <![CDATA[
+            //##################################################################
+            //
+            // $id$ data controller and factory
+            //
+            //##################################################################
+            
+            //------------------------------------------------------------------
+            // Controller $id$Controller
+            // 
+            // Define a controller for $id$ data
+            //
+            //------------------------------------------------------------------
+            var $id$Controller = function($id$Factory) {
+                var vm = this;
+                
+                // store data in the scope as $member1$
+                vm.$member1$ = [];
+
+                function init() {
+                    $id$Factory.get$member1$()
+                    .then(function (result) {
+                        vm.$member1$ = result.data;  // TODO: extract desired data
+                    });
+                }
+
+                init();
+            }
+            
+            //------------------------------------------------------------------
+            //
+            // $id$Factory: Factory for retrieving $id$ data
+            //
+            //------------------------------------------------------------------
+            app.factory('$id$Factory', function ($$http) {
+                var factory = {};
+
+                factory.get$member1$ = function () {
+                    return $$http.get("/api/get$member1$")  // TODO: change API if necessary
+                    .then(function (result) {
+                        return result;
+                    },
+                    function () {
+                    });
+                };
+                return factory;
+            });
+            
+            // wire up the $id$Controler for the application
+            app.controller('$id$Controller', $id$Controller);]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
