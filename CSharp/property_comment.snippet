@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Insert a property comment</Title>
+            <Shortcut>pcomment</Shortcut>
+            <Description>Insert a property comment at the current cursor location</Description>
+        </Header>
+
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>Property Name</ToolTip>
+                    <Default>noname</Default>
+                </Literal>
+                <Literal>
+                    <ID>description</ID>
+                    <ToolTip>Property Description</ToolTip>
+                    <Default></Default>
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[
+            ///----------------------------------------------------------------
+            ///
+            /// Property:       $name$
+            /// Author:         Pete Humphrey
+            ///
+            /// <summary>$description$</summary>
+            ///
+            ///----------------------------------------------------------------
+            ]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

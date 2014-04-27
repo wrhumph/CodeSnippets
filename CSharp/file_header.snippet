@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Insert a file header</Title>
+            <Shortcut>fileheader</Shortcut>
+            <Description>Insert a file header at the current cursor location</Description>
+        </Header>
+
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>filename</ID>
+                    <ToolTip>This file name</ToolTip>
+                    <Default></Default>
+                </Literal>
+                <Literal>
+                    <ID>comment</ID>
+                    <ToolTip>File description</ToolTip>
+                    <Default></Default>
+                </Literal>
+                <Literal Editable="false">
+                    <ID>logtag</ID>
+                    <ToolTip>VSS Log tag</ToolTip>
+                    <Default>$Log$</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[
+            //----------------------------------------------------------------
+            //
+            // File:        $filename$
+            // Author:      Pete Humphrey
+            // Description: $comment$
+            //
+            // $logtag$
+            //
+            //----------------------------------------------------------------]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

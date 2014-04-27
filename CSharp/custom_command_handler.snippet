@@ -1,0 +1,25 @@
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>Insert Custom Command Handler Code</Title>
+    <Author>Pete Humphrey</Author>
+    <Shortcut>custcmd</Shortcut>
+    <Description>Creates a function to handle a custom command</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>command</ID>
+        <Default>COMMAND</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="CSharp">
+      <![CDATA[private void Handle$command$( object sender, ExecutedRoutedEventArgs e)
+      {
+          // Insert your code here
+      }]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>
