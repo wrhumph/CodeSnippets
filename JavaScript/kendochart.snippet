@@ -1,0 +1,113 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>Kendo Chart</Title>
+    <Author>Pete Humphrey</Author>
+    <Shortcut>kchart</Shortcut>
+    <Description>Markup snippet for a KendoUI chart</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>identifier</ID>
+        <ToolTip>Specifies an identifier for this chart</ToolTip>
+        <Default>sample</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="javascript"><![CDATA[
+    
+    
+
+        ///----------------------------------------------------------------
+        ///
+        /// Function:       create_chart
+        /// Author:         Pete Humphrey
+        ///
+        /// <summary>
+        /// Initialize a Kendo DataVis chart named $identifier$
+        /// </summary>
+        ///
+        ///----------------------------------------------------------------
+        function create_$identifier$_chart() {
+            $$("#$identifier$_chart").kendoChart({
+                title: {
+                    text: $identifier$_chart_title()
+                },
+                legend: {
+                    position: "bottom"
+                },
+                chartArea: {
+                    background: ""
+                },
+                seriesDefaults: {
+                    type: "line",
+                    style: "smooth"
+                },
+                dataSource: {
+                    data: $identifier$SeriesData
+                },
+                series: [
+                    {
+                        type: "line",
+                        width: 1,
+                        color: "blue",
+                        markers: { visible: false },
+                        axis: "battery",
+                        name: "Battery",
+                        field: "battery"
+                    },
+                    {
+                        type: "area",
+                        width: 1,
+                        color: "red",
+                        markers: { visible: false },
+                        axis: "temperature",
+                        name: "Temperature",
+                        field: "temperature"
+                    }
+                ],
+                transitions: true,
+                valueAxes: [
+                    { name: "battery", min: 2, max: 4, color: "blue" },
+                    { name: "temperature", min: 40, max: 90, color: "red" },
+                ],
+                xAxis: {
+                    majorUnit: 100,
+                    visible: false
+                },
+                categoryAxis: {
+                    field: "sample",
+                    justified: true,
+                    majorGridLines: { step: 50 },
+                    minorGridLines: { visible: false },
+                    labels: { step: 50 }
+                }
+            });
+        }
+        
+        
+        ///----------------------------------------------------------------
+        ///
+        /// Function:       $identifier$_chart_title
+        /// Author:         Pete Humphrey
+        ///
+        /// <summary>
+        /// Return a title string for $identifier$_chart
+        /// </summary>
+        ///
+        ///----------------------------------------------------------------
+        function $identifier$_chart_title() {
+            if ($identifier$SeriesData.length > 0) {
+                var min_date = $identifier$SeriesData[0].date;
+                var max_date = $identifier$SeriesData[$identifier$SeriesData.length - 1].date;
+                return ("Battery / Temperature for " + SelectedNode + " from " + min_date + " to " + max_date);
+            }
+            else return ($identifier$SeriesData + " has no data");
+        }
+
+
+    ]]></Code>
+  </Snippet>
+</CodeSnippet>

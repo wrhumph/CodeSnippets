@@ -1,0 +1,108 @@
+<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>Kendo Grid</Title>
+    <Author>Pete Humphrey</Author>
+    <Shortcut>kgrid</Shortcut>
+    <Description>Markup snippet for a KendoUI grid</Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>identifier</ID>
+        <ToolTip>Specifies an identifier for this chart</ToolTip>
+        <Default>sample</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="javascript"><![CDATA[
+    
+    
+
+        ///----------------------------------------------------------------
+        ///
+        /// Function:       initialize_$identifier$_grid
+        /// Author:         Pete Humphrey
+        ///
+        /// <summary>
+        /// Initialize a Kendo grid named $identifier$.
+        // You must have a DIV with id='$identifier$_grid' in your HTML
+        /// </summary>
+        ///
+        ///----------------------------------------------------------------
+        function initialize_$identifier$_grid() {
+            $$('#$identifier$_grid').kendoGrid({
+
+                dataSource: {
+                    type: 'json',
+                    transport: {
+                        read: {
+                            url: $identifier$_api_url,
+                            dataType: 'json',
+                        }
+                    },
+                    schema: {
+                        data: save_$identifier$_api_data
+                    }
+                },
+                error: function (xhr, error) { alert(xhr); },
+                scrollable: true,
+                sortable: true,
+                selectable: 'row',
+                columns: [
+                    {
+                        field: 'Field1',
+                        title: 'Field One',
+                        width: 200
+                    },
+                    {
+                        field: 'Field2',
+                        title: 'Field Two',
+                        format: "{0:0.000}",
+                        width: 70
+                    },
+                ],
+            });
+        }
+        
+        
+        ///----------------------------------------------------------------
+        ///
+        /// Function:       $identifier$_api_url
+        /// Author:         Pete Humphrey
+        ///
+        /// <summary>
+        /// Returns a URL for the $identifier$ MVC API
+        /// </summary>
+        ///
+        ///----------------------------------------------------------------
+        function $identifier$_api_url() {
+            var result = RootURL + "api/whatever";
+            return result;
+        }
+
+        
+        ///----------------------------------------------------------------
+        ///
+        /// Function:       save_$identifier$_api_data
+        /// Author:         Pete Humphrey
+        ///
+        /// <summary>
+        /// Returns an array of data values to populate the $identifier$ grie
+        /// </summary>
+        ///
+        /// <param id='response'>The JSON object that the API sent back</param>
+        /// <return>an array of JSON objects that will populate the grid</return>
+        ///
+        ///----------------------------------------------------------------
+        function save_$identifier$_api_data(response) {
+            $identifier$Data = response.Data.Data;
+            return $identifier$Data;
+        }
+
+
+
+    ]]></Code>
+  </Snippet>
+</CodeSnippet>
