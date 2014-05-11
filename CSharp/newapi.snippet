@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Insert an MVC5 HttpGet API function into a controller</Title>
+            <Shortcut>newapi</Shortcut>
+            <Description>Insert an MVC5 HttpGet API function at current cursor location</Description>
+        </Header>
+
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>Function Name</ToolTip>
+                    <Default>ACTION</Default>
+                </Literal>
+                <Literal>
+                    <ID>route</ID>
+                    <ToolTip>Action Route</ToolTip>
+                    <Default>myapi</Default>
+                </Literal>
+                <Literal>
+                    <ID>description</ID>
+                    <ToolTip>Action Description</ToolTip>
+                    <Default></Default>
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[
+        ///----------------------------------------------------------------
+        ///
+        /// Function:       $name$
+        /// Invocation:     GET $route$
+        /// Author:         Pete Humphrey
+        ///
+        /// <summary>
+        /// $description$
+        /// </summary>
+        ///
+        /// <param name=""></param>
+        /// <returns>an AjaxResult object</returns>
+        ///
+        ///----------------------------------------------------------------
+        [Route("$route$")]  // specify parameters with apiname/{parameter}
+		[HttpGet]
+        public AjaxResult $name$()
+        {
+            AjaxResult result = new AjaxResult("$name$");
+            try
+            {
+			    // ADD CODE
+            }
+            catch (Exception ex)
+            {
+                result.Fail(ex);
+            }
+            return result;
+        }]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
