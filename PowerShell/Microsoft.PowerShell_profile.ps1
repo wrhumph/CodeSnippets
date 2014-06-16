@@ -1,3 +1,17 @@
+function prompt { 
+    $loc = get-location; 
+	$dir = [System.IO.Path]::GetFilename($loc); 
+	return ("" + $dir + ">")
+}
+
+function boottime
+{
+    Get-CimInstance -ClassName win32_operatingsystem | select csname, lastbootuptime
+}
+
+Set-Alias -Name np -Value 'C:\Program Files (x86)\Notepad++\notepad++.exe'
+Set-Alias -Name ll -Value "dir"
+
 
 $console = $host.UI.RawUI
 
@@ -15,15 +29,33 @@ $size.Width = 130
 $size.Height = 50
 $console.WindowSize = $size
 
-$colors = $host.PrivateData
-$colors.VerboseForegroundColor = "black"
-$colors.VerboseBackgroundColor = "white"
-$colors.WarningForegroundColor = "magenta"
-$colors.WarningBackgroundColor = "white"
-$colors.ErrorForegroundColor = "red"
-$colors.ErrorBackgroundColor = "white"
+#$colors = $host.PrivateData
+#$colors.VerboseForegroundColor = "black"
+#$colors.VerboseBackgroundColor = "white"
+#$colors.WarningForegroundColor = "magenta"
+#$colors.WarningBackgroundColor = "white"
+#$colors.ErrorForegroundColor = "red"
+#$colors.ErrorBackgroundColor = "white"
 
-Set-Alias np 'C:\Program Files (x86)\Notepad++\notepad++.exe'
+$h = Get-Host
+$ui = $h.UI
+$raw = $ui.RawUI
+
+$raw.ForegroundColor       = "Black"
+$raw.BackgroundColor       = "White"
+$raw.WindowTitle           = "Petes PowerShell";
+
+$pd = (Get-Host).PrivateData
+$pd.ErrorForegroundColor    = "Red"
+$pd.ErrorBackgroundColor    = "White"
+$pd.WarningForegroundColor  = "Red"
+$pd.WarningBackgroundColor  = "White"
+$pd.DebugForegroundColor    = "Blue"
+$pd.DebugBackgroundColor    = "White"
+$pd.VerboseForegroundColor  = "Black"
+$pd.VerboseBackgroundColor  = "White"
+$pd.ProgressForegroundColor = "Green"
+$pd.ProgressBackgroundColor = "White"
 
 function home { Set-Location C:\Users\Pete }
 
@@ -37,10 +69,5 @@ function ex { explorer . }
 
 Set-Location C:\Users\Pete
 
-function prompt { 
-    $loc = get-location; 
-	$dir = [System.IO.Path]::GetFilename($loc); 
-	return ("" + $dir + ">")
-}
 
 
