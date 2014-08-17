@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Angular CSHTML Page</Title>
+      <Author>Pete</Author>
+      <Description>Pete's Template for a new Angular cshtml page</Description>
+      <Shortcut>ngpage</Shortcut>
+        <SnippetTypes>
+          <SnippetType>Expansion</SnippetType>
+        </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>id</ID>
+          <ToolTip>Replace with a variable to hold the controller name.</ToolTip>
+          <Default>CONTROLLER</Default>
+        </Literal>
+        <Literal>
+          <ID>title</ID>
+          <ToolTip>Replace with a page title variable.</ToolTip>
+          <Default>PAGE TITLE</Default>
+        </Literal>
+        <Literal>
+          <ID>controller</ID>
+          <ToolTip>Replace with the string name of the controller.</ToolTip>
+          <Default>customController</Default>
+        </Literal>
+        <Literal>
+          <ID>dependency</ID>
+          <ToolTip>Replace with the dependency for controller.</ToolTip>
+          <Default>factory</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="HTML">
+        <![CDATA[
+
+<!-- ######################################################## -->
+<!--
+     Page Title:  $title$
+     Angular App: $id$App
+     Controller:  $id$Controller
+     Factory:     $id$Factory
+-->
+<!-- ######################################################## -->
+
+@{
+    ViewBag.Title = "$title$";
+}
+
+<h2>$title$</h2>
+
+<div style="margin-top: 1em;" ng-app="$id$App">
+    <div ng-controller="$id$Controller">
+        {{Data.Message}}
+    </div>
+</div>
+
+
+
+@section scripts
+{
+    <script>
+
+        var app = angular.module("$id$App", [])
+        .controller("$id$Controller", function ($$scope, $id$Factory, $$http) {
+            console.debug("In $id$Controller");
+            $$scope.Data = { Message: "Not initialized" };
+            
+            function init() {
+                console.debug("In init()");
+                $id$Factory.getData()
+                .then(function (result) {
+                    console.debug("Have factory result");
+                    $$scope.Data = { Message: 'whatever' };
+                });
+            }
+
+            // event handler (e.g. ng-click)
+            $$scope.do_something = function () {
+                // DO SOMETHING
+            }
+
+
+            init();
+        })
+        .factory("$id$Factory", function ($$http) {
+            console.debug("In $id$Factory");
+            var factory = {};
+
+            factory.cannedData = function () {
+                console.debug("In $id$Factory.cannedData()");
+                return { Message: "Text from $id$Factory.cannedData" };
+            };
+
+            factory.getData = function () {
+                console.debug("In $id$Factory.getData");
+                return $$http.get("/dbapi/whatever")  // TODO: change API call
+                .then(function (result) {
+                    console.debug("Have getData result");
+                    return result;
+                },
+                function () {
+                })
+            };
+
+            return factory;
+        });
+
+    </script>
+}
+
+@section local_styles
+{
+    <style>
+    </style>
+}
+      ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
