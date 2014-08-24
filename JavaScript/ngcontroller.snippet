@@ -41,55 +41,57 @@
       </Declarations>
       <Code Language="JavaScript">
         <![CDATA[
-            //##################################################################
-            //
-            // $id$ data controller and factory
-            //
-            //##################################################################
-            
-            //------------------------------------------------------------------
-            // Controller $id$Controller
-            // 
-            // Define a controller for $id$ data
-            //
-            //------------------------------------------------------------------
-            var $id$Controller = function($id$Factory) {
-                var vm = this;
-                
-                // store data in the scope as $member1$
-                vm.$member1$ = [];
+//##################################################################
+//
+// $id$ data controller and factory
+//
+//##################################################################
 
-                function init() {
-                    $id$Factory.get$member1$()
-                    .then(function (result) {
-                        vm.$member1$ = result.data;  // TODO: extract desired data
-                    });
-                }
+//------------------------------------------------------------------
+// Controller $id$Controller
+// 
+// Define a controller for $id$ data
+//
+//------------------------------------------------------------------
+function initialize$id$(app) {
+    var $id$Controller = function($id$Factory) {
+        var vm = this;
+        
+        // store data in the scope as $member1$
+        vm.$member1$ = [];
 
-                init();
-            }
-            
-            //------------------------------------------------------------------
-            //
-            // $id$Factory: Factory for retrieving $id$ data
-            //
-            //------------------------------------------------------------------
-            app.factory('$id$Factory', function ($$http) {
-                var factory = {};
-
-                factory.get$member1$ = function () {
-                    return $$http.get("/api/get$member1$")  // TODO: change API if necessary
-                    .then(function (result) {
-                        return result;
-                    },
-                    function () {
-                    });
-                };
-                return factory;
+        function init() {
+            $id$Factory.get$member1$()
+            .then(function (result) {
+                vm.$member1$ = result.data;  // TODO: extract desired data
             });
-            
-            // wire up the $id$Controler for the application
-            app.controller('$id$Controller', $id$Controller);]]>
+        }
+
+        init();
+    }
+    
+    //------------------------------------------------------------------
+    //
+    // $id$Factory: Factory for retrieving $id$ data
+    //
+    //------------------------------------------------------------------
+    app.factory('$id$Factory', function ($$http) {
+        var factory = {};
+
+        factory.get$member1$ = function () {
+            return $$http.get("/api/get$member1$")  // TODO: change API if necessary
+            .then(function (result) {
+                return result;
+            },
+            function () {
+            });
+        };
+        return factory;
+    });
+    
+    // wire up the $id$Controler for the application
+    app.controller('$id$Controller', $id$Controller);]]>
+}
       </Code>
     </Snippet>
   </CodeSnippet>
