@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Insert a DockPanel with menu and status bar</Title>
+            <Shortcut>dock</Shortcut>
+            <Description>Insert a block comment at the current cursor location</Description>
+        </Header>
+
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>comment</ID>
+                    <ToolTip>Comment</ToolTip>
+                    <Default></Default>
+                </Literal>
+            </Declarations>
+            <Code Language="XAML">
+                <![CDATA[<DockPanel>
+    <Menu Height ="23" Name ="menu1" DockPanel.Dock ="Top"> 
+        <MenuItem Header ="File">
+            <MenuItem Header ="Open database ..." />
+            <Separator />
+            <MenuItem Header ="Exit"/>
+        </MenuItem>
+    </Menu>
+    <StatusBar Height ="23" Name ="statusBar1" DockPanel.Dock ="Bottom" />
+    <Grid  Name ="grid1"  />
+</DockPanel>]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
+

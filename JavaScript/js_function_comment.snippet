@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Insert a function comment</Title>
+            <Shortcut>fcomment</Shortcut>
+            <Description>Insert a function comment at the current cursor location</Description>
+        </Header>
+
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>name</ID>
+                    <ToolTip>Function Name</ToolTip>
+                    <Default>noname</Default>
+                </Literal>
+                <Literal>
+                    <ID>description</ID>
+                    <ToolTip>Function Description</ToolTip>
+                    <Default></Default>
+                </Literal>
+            </Declarations>
+            <Code Language="JavaScript">
+                <![CDATA[
+            ///----------------------------------------------------------------
+            ///
+            /// Function:       $name$
+            /// Author:         Pete Humphrey
+            ///
+            /// <summary>
+            /// $description$
+            /// </summary>
+            ///
+            /// <param name=""></param>
+            /// <returns></returns>
+            ///
+            ///----------------------------------------------------------------]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
