@@ -47,6 +47,8 @@
 //
 //##################################################################
 
+var My$id$Controller;
+
 //------------------------------------------------------------------
 // Controller $id$Controller
 // 
@@ -56,14 +58,22 @@
 function initialize$id$(app) {
     var $id$Controller = function($id$Factory) {
         var vm = this;
+        My$id$Controller = this;
         
         // store data in the scope as $member1$
+        vm.Message = '';
+        vm.Elapsed = 0;
         vm.$member1$ = [];
 
         function init() {
+            log_debug('In initialize$id$');
             $id$Factory.get$member1$()
             .then(function (result) {
-                vm.$member1$ = result.data;  // TODO: extract desired data
+                log_debug('Have results from $id$Factory.get$member1$()');
+                var ajax_result = result.data;
+                vm.Message = ajax_result.Message;
+                vm.Elapsed = ajax_result.Elapsed;
+                vm.$member1$ = ajax_result.Data.$member1$;  // TODO: extract desired data
             });
         }
 
