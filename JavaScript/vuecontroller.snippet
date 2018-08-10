@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>JavaScript for VueJS Controller</Title>
+      <Author>Pete</Author>
+      <Description>Pete's Template for adding a VueJS Controller</Description>
+      <Shortcut>vuecontroller</Shortcut>
+        <SnippetTypes>
+          <SnippetType>Expansion</SnippetType>
+        </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>Replace with a variable to hold the controller name.</ToolTip>
+          <Default>vuemain</Default>
+        </Literal>
+        <Literal>
+          <ID>domid</ID>
+          <ToolTip>Replace with name of the DOM element to attach to.</ToolTip>
+          <Default>vuediv</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="JavaScript">
+        <![CDATA[
+//------------------------------------------------------------------
+// 
+// VueJS Controller: $name$
+// DOM element:      $domid$
+//
+//------------------------------------------------------------------
+var $name$ = new Vue({
+    el: '$domid$',
+    data: {
+        settings: { },
+        message: 'this is a test'
+    },
+    
+    created: function () {
+        // final initialization after load complete
+    },
+    methods: {
+        test: function () {
+            console.log('this is a  test');
+        },
+
+    },
+
+    computed: {
+        example: function () { return "Example"); },
+    }
+});
+    ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
